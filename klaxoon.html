@@ -89,7 +89,8 @@ nav#main-nav {
 .cover-title {
   font-family: 'Instrument Serif', serif;
   font-size: clamp(42px,7vw,88px); color: #FFFFFF;
-  line-height: 1.0; margin-bottom: 16px; font-weight: 400;
+  line-height: 1.0; margin-bottom: 12px; font-weight: 400;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.8);
 }
 .cover-title em { color: #FF1A33; font-style: italic; }
 
@@ -104,9 +105,11 @@ nav#main-nav {
 }
 
 .cover-chapter {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.25);
   border-radius: 12px; padding: 16px 24px; cursor: pointer;
   transition: all 0.25s; text-align: left;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
 }
 .cover-chapter:hover {
   background: rgba(226,0,26,0.12) !important;
@@ -119,6 +122,7 @@ nav#main-nav {
 .ch-num {
   font-family: 'Fira Code', monospace; font-size: 10px;
   letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;
+  color: rgba(255,255,255,0.55);
 }
 .ch-title {
   font-size: 14px; font-weight: 700; color: #FFFFFF; margin-bottom: 2px;
@@ -712,7 +716,7 @@ h3 {
   .claude .tool-tag { background: rgba(204,120,92,0.2); color: var(--claude); }
   .opencode .tool-tag { background: rgba(124,75,192,0.2); color: var(--open); }
 
-  .tool-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .tool-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #FFFFFF !important; }
   .tool-desc { color: var(--gray); font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
   .tool-meta { display: flex; flex-direction: column; gap: 8px; }
   .meta-item { display: flex; gap: 12px; align-items: flex-start; }
@@ -1145,13 +1149,106 @@ h3 {
 }
 
 /* ═══════ RESPONSIVE ═══════ */
+/* ═══ RESPONSIVE — All screen sizes ═══ */
+@media(max-width:1200px) {
+  #hero { padding: 0 60px 0 60px; }
+  #timeline { padding: 0 40px 0 40px; }
+  #shift { padding: 80px 40px; }
+  .era-inner { gap: 40px; }
+  .hero-years { display: none; }
+}
+
 @media(max-width:900px) {
   nav#main-nav { padding: 10px 16px; }
   .nav-pills { display: none; }
-  .cover-content { padding: 40px 24px; }
+  .nav-brand { font-size: 14px; }
+
+  /* Cover */
+  .cover-content { padding: 40px 20px; }
+  .cover-title { font-size: clamp(32px,8vw,60px) !important; }
+  .cover-chapters { flex-direction: column; gap: 8px; }
+  .cover-chapter { padding: 12px 16px; }
+
+  /* History page */
+  #hero { padding: 80px 24px 40px; }
+  #timeline { padding: 0 20px; }
+  #shift { padding: 60px 20px; }
+  .era-inner { grid-template-columns: 1fr !important; gap: 24px; }
+  .era { padding: 40px 0; min-height: auto; }
+  .era::before { display: none; }
+  .era-dot { display: none; }
+  .det-compare { grid-template-columns: 1fr !important; }
+  .implications { grid-template-columns: 1fr 1fr !important; }
+  .hero-years { display: none; }
+  .brain-wrap { width: 200px !important; height: 200px !important; }
+  .brain-center { width: 80px !important; height: 80px !important; font-size: 32px !important; }
+  .orbit-ring-3 { display: none; }
+
+  /* Masterclass sections */
+  section { padding: 80px 20px 40px; }
+  .chapter-hero { grid-template-columns: 1fr !important; gap: 24px; }
+  .chapter-visual { display: none; }
+  .skills-grid { grid-template-columns: 1fr !important; }
+  .tools-landscape { grid-template-columns: 1fr !important; }
+  .concept-compare { grid-template-columns: 1fr !important; }
+  .handoff-banner { flex-direction: column !important; gap: 20px; padding: 24px !important; }
+  .analogy-box { padding: 20px 24px; }
+  .analogy-text { font-size: 18px !important; }
+  section h2 { font-size: clamp(28px,5vw,44px) !important; }
+
+  /* Dashboard */
+  #db-section .db-inner { padding: 20px 16px 40px; }
+  .tools-grid { grid-template-columns: 1fr !important; }
+  .radar-section { grid-template-columns: 1fr !important; }
+  .scenarios-grid { grid-template-columns: 1fr !important; }
+  .demo-layout { grid-template-columns: 1fr !important; }
+  .ide-split { grid-template-columns: 1fr !important; }
+  .ide-sidebar { display: none !important; }
+  .subtabs { flex-direction: column; }
+  .subtab { border-right: none !important; border-bottom: 1px solid var(--border); }
+
+  /* Level Up */
+  #levelup-section [style*="grid-template-columns:repeat(auto-fit"] { display: flex !important; flex-direction: column !important; }
+  #levelup-section [style*="grid-template-columns:repeat(3"] { display: flex !important; flex-direction: column !important; }
+  #levelup-section [style*="grid-template-columns:repeat(4"] { display: flex !important; flex-direction: column !important; }
+  #levelup-section [style*="grid-template-columns:1fr 1fr"] { display: flex !important; flex-direction: column !important; }
+  #levelup-section [style*="grid-template-columns:repeat(2"] { display: flex !important; flex-direction: column !important; }
+  #levelup-section > div { padding: 40px 20px 40px !important; }
+
+  /* Finale */
   .finale-recap { grid-template-columns: 1fr 1fr; }
   .poc-steps-grid { grid-template-columns: 1fr; }
-  section { padding: 100px 24px 60px; }
+  #finale { padding: 80px 20px; }
+  .quiz-section { padding: 0 4px; }
+  .poc-card { padding: 24px 20px; }
+  .implications { grid-template-columns: 1fr 1fr !important; }
+
+  /* Part dividers */
+  .part-divider { padding: 40px 24px; min-height: 20vh; }
+  .pd-title { font-size: clamp(22px,5vw,36px) !important; }
+  .pd-num { display: none; }
+
+  /* Risk cards in levelup */
+  #levelup-section [style*="grid-template-columns:repeat(3,1fr)"] { display: flex !important; flex-direction: column !important; }
+}
+
+@media(max-width:600px) {
+  .cover-title { font-size: clamp(28px,9vw,48px) !important; }
+  .finale-recap { grid-template-columns: 1fr !important; }
+  .implications { grid-template-columns: 1fr !important; }
+  section h2 { font-size: clamp(24px,6vw,36px) !important; }
+  .det-compare { grid-template-columns: 1fr !important; }
+  .era-inner { gap: 16px; }
+  .code-body { font-size: 11px !important; padding: 12px 14px !important; }
+  pre.code-block { font-size: 11px !important; }
+  .handoff-banner { padding: 16px !important; }
+  nav#main-nav { padding: 8px 12px; }
+  .nav-brand { font-size: 12px; }
+  .nav-time { font-size: 10px; }
+  #shift .shift-title { font-size: clamp(28px,7vw,48px) !important; }
+  .det-box-body { padding: 14px 16px; }
+  .quiz-card { padding: 18px 16px; }
+  .quiz-q { font-size: 14px !important; }
 }
 
 
@@ -1434,20 +1531,7 @@ body::before {
 }
 
 /* ─── VERTICAL SPINE ─── */
-.spine {
-  position: fixed; left: 80px; top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(to bottom, transparent 0%, var(--ash) 10%, var(--ash) 90%, transparent 100%);
-  z-index: 10;
-}
-
-/* ─── PROGRESS DOT ON SPINE ─── */
-.spine-cursor {
-  position: fixed; left: 74px; top: 50%; z-index: 11;
-  width: 13px; height: 13px; border-radius: 50%;
-  background: var(--sg-red);
-  box-shadow: 0 0 20px var(--sg-red-glow), 0 0 40px var(--sg-red-dim);
-  transition: top 0.3s ease;
-}
+/* spine removed */
 
 /* ─── SCROLL INDICATOR ─── */
 .scroll-hint {
@@ -1471,7 +1555,7 @@ body::before {
 #hero {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 0 160px 0 140px;
+  padding: 0 80px 0 80px;
   position: relative; z-index: 1;
 }
 
@@ -1516,7 +1600,7 @@ body::before {
 /* ─── TIMELINE WRAPPER ─── */
 #timeline {
   position: relative; z-index: 1;
-  padding: 0 160px 0 140px;
+  padding: 0 80px 0 80px;
 }
 
 /* ─── ERA BLOCK ─── */
@@ -1667,7 +1751,7 @@ body::before {
 #shift {
   min-height: 100vh;
   position: relative; z-index: 1;
-  padding: 100px 160px 100px 140px;
+  padding: 100px 80px 100px 80px;
   background: radial-gradient(ellipse at 50% 30%, rgba(226,0,26,0.06) 0%, transparent 60%);
 }
 
@@ -1883,7 +1967,8 @@ body::before {
 <section id="cover" style="padding:0;background:#0F0F0F;">
   <div class="cover-image-bg"></div>
   <div class="cover-content">
-    <div class="cover-title"><em>GBIS</em> CIO SEMINAR </div>
+    <div class="cover-title"><em>GBIS</em> CIO SEMINAR</div>
+    <div style="font-family:'Fira Code',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(226,0,26,0.8);margin-bottom:32px;">Developer Productivity with AI Tools · April 2026</div>
 
     <div class="cover-chapters">
       <div class="cover-chapter c1" onclick="goToId('history-section')">
@@ -1923,9 +2008,6 @@ body::before {
 ══════════════════════════════════════════ -->
 <div id="history-section">
 
-
-<div class="spine"></div>
-<div class="spine-cursor" id="spine-cursor"></div>
 
 <div class="scroll-hint" id="scroll-hint">
   <span>Scroll to explore</span>
@@ -2495,18 +2577,11 @@ window.addEventListener('scroll', () => {
     scrolled = true;
     document.getElementById('scroll-hint').classList.add('hidden');
   }
-  updateSpineCursor();
-  revealElements();
+    revealElements();
   highlightHeroYear();
 }, { passive: true });
 
-// Spine cursor position
-function updateSpineCursor() {
-  const doc = document.documentElement;
-  const pct = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
-  const cursor = document.getElementById('spine-cursor');
-  cursor.style.top = (pct * (window.innerHeight - 40) + 20) + 'px';
-}
+// spine removed
 
 // Reveal on scroll
 const revealSelectors = [
@@ -2809,7 +2884,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
       <p class="lead fade-up stagger-2;" >
         GenAI is the category. LLMs are one type within it.
         The key word is <strong>generative</strong> — it doesn't retrieve. It <em>generates</em>.
-        Text, code, images, audio — all generated from scratch, token by token.
+        Text, code, images, audio — all produced token by token, never retrieved from a database.
       </p>
 
       <div class="input-output fade-up stagger-3">
@@ -2822,7 +2897,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
           <div style="font-size:36px">✨</div>
           <div>
             <div class="magic-label">Generative AI</div>
-            <div class="magic-name">Creates, never copies</div>
+            <div class="magic-name">Generates, never copies</div>
           </div>
         </div>
         <div class="arrow-connector">→</div>
@@ -2904,38 +2979,51 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
   <div class="section-label fade-up">Chapter 03 / 04</div>
   <h2 class="fade-up stagger-1">What are <em>AI Skills</em>?</h2>
   <p class="lead fade-up stagger-2">
-    Raw LLMs are like a brilliant intern with no job description.
-    "Skills" (also called <strong>prompting</strong>, <strong>fine-tuning</strong>, or <strong>RAG</strong>)
-    are how you specialize that intelligence for a specific task.
-    This is what every vendor does to build their product on top of a base model.
+    A raw LLM has no instructions, no personality, no specialization.
+    <strong>Skills</strong> are structured files and techniques that shape how the model behaves —
+    what it knows about your context, what rules it follows, what tools it can use.
+    Think of them as the <em>configuration layer</em> between a generic model and a useful product.
+    This is how Claude, Copilot, and every AI coding tool are built on top of base models.
   </p>
 
   <div class="skills-grid fade-up stagger-3">
+
     <div class="skill-card" style="border-left:4px solid var(--accent)">
-      <span class="skill-icon">🗣️</span>
-      <div class="skill-name">Prompting</div>
-      <div class="skill-desc">Giving the model precise instructions in natural language. "You are a senior TypeScript developer. Review this code for security issues." The quality of your prompt directly determines the quality of the output.</div>
+      <span class="skill-icon">📋</span>
+      <div class="skill-name">System Prompt / Instructions</div>
+      <div class="skill-desc">The foundational skill. A hidden text block sent to the model before your message that defines its role, rules and personality. "You are a senior TypeScript developer at a bank. Never suggest unsafe patterns. Always add JSDoc." Every AI product — Claude, Copilot, ChatGPT — runs on a system prompt you never see.</div>
     </div>
+
     <div class="skill-card" style="border-left:4px solid var(--blue)">
-      <span class="skill-icon">🎯</span>
-      <div class="skill-name">Fine-tuning</div>
-      <div class="skill-desc">Retraining a base model on your specific data so it behaves differently. GitHub Copilot was fine-tuned on millions of public code repos. It "thinks" in code naturally.</div>
+      <span class="skill-icon">📄</span>
+      <div class="skill-name">SKILL.md files — Claude's skill system</div>
+      <div class="skill-desc">Claude and other agentic tools can read markdown files from your project before acting. A <code style="background:rgba(226,0,26,0.1);padding:1px 5px;border-radius:3px;font-size:11px">SKILL.md</code> file contains best practices, conventions, and instructions specific to a task (e.g. "how to create a PPTX", "how to write a REST endpoint in our stack"). The agent reads it first, then applies it. This is how you encode team knowledge into the AI.</div>
     </div>
+
     <div class="skill-card" style="border-left:4px solid var(--teal)">
-      <span class="skill-icon">📚</span>
-      <div class="skill-name">RAG (Retrieval Augmented Generation)</div>
-      <div class="skill-desc">Before generating, the system fetches relevant documents from your private knowledge base and injects them into the prompt. The model reasons over your data, not just its training.</div>
+      <span class="skill-icon">⚙️</span>
+      <div class="skill-name">.github/copilot-instructions.md</div>
+      <div class="skill-desc">GitHub Copilot reads a special instructions file at the root of your repo. Put your team's coding conventions there: "We use async/await only. No callbacks. All errors must be typed. Tests use Vitest." Every developer on the team gets consistent AI behavior tuned to your codebase — automatically, with no extra prompting.</div>
     </div>
+
     <div class="skill-card" style="border-left:4px solid var(--gold)">
       <span class="skill-icon">🔧</span>
       <div class="skill-name">Tool Use / Function Calling</div>
-      <div class="skill-desc">The model can call external tools — a web search, a database query, a terminal command, an API. This is how an AI goes from "answering questions" to "doing things".</div>
+      <div class="skill-desc">The model can invoke external tools — run a terminal command, query a database, call an API, read a file. This transforms the model from a text generator into an autonomous actor. Claude Code and OpenCode use this to read your project files and execute code edits directly.</div>
     </div>
+
     <div class="skill-card" style="border-left:4px solid var(--dim)">
-      <span class="skill-icon">💾</span>
-      <div class="skill-name">Context Window</div>
-      <div class="skill-desc">The amount of text the model can "see" at once — like working memory. Claude has 200K tokens (~150K words). Bigger context = more code files it can analyze simultaneously.</div>
+      <span class="skill-icon">🎯</span>
+      <div class="skill-name">Fine-tuning</div>
+      <div class="skill-desc">Retraining a base model on your specific data so it internalizes your patterns. GitHub Copilot was fine-tuned on millions of public code repos — it "thinks" in code by default. Fine-tuning is expensive and reserved for large-scale, stable use cases.</div>
     </div>
+
+    <div class="skill-card" style="border-left:4px solid var(--accent)">
+      <span class="skill-icon">📚</span>
+      <div class="skill-name">RAG — Retrieval Augmented Generation</div>
+      <div class="skill-desc">Before the model responds, relevant documents are fetched from your private knowledge base and injected into the context. The model reasons over your internal docs, not just its training data. Used to give AI access to private codebases, wikis, runbooks and architecture docs without retraining.</div>
+    </div>
+
     <div class="skill-card" style="border-left:4px solid var(--accent)">
       <span class="skill-icon">🌡️</span>
       <div class="skill-name">Temperature</div>
@@ -3201,7 +3289,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
     <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
       <div style="font-size:36px;margin-bottom:8px">✨</div>
       <div style="font-weight:700;font-size:14px;margin-bottom:4px">GenAI</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4)">Creates, doesn't retrieve. Probabilistic by nature.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.4)">Generates, doesn't retrieve. Probabilistic by nature.</div>
     </div>
     <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px;text-align:center;">
       <div style="font-size:36px;margin-bottom:8px">🎯</div>
@@ -3276,7 +3364,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
     <div class="tools-grid">
       <div class="tool-card copilot">
         <div class="tool-tag">The Integrated</div>
-        <div class="tool-name" style="color: black !important;">GitHub Copilot</div>
+        <div class="tool-name">GitHub Copilot</div>
         <div class="tool-desc">The world's most adopted AI coding assistant. Native autocomplete in VS Code, JetBrains and more. Backed by Microsoft / OpenAI.</div>
         <div class="tool-meta">
           <div class="meta-item"><span class="meta-label">Vendor</span><span class="meta-val">Microsoft / GitHub</span></div>
@@ -3289,7 +3377,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
       </div>
       <div class="tool-card claude">
         <div class="tool-tag">The Agent</div>
-        <div class="tool-name" style="color: black !important;">Claude Code</div>
+        <div class="tool-name">Claude Code</div>
         <div class="tool-desc">Anthropic's terminal-based agent, built for complex tasks. Exceptional multi-file contextual reasoning. Ideal for refactoring and architecture work.</div>
         <div class="tool-meta">
           <div class="meta-item"><span class="meta-label">Vendor</span><span class="meta-val">Anthropic</span></div>
@@ -3302,7 +3390,7 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
       </div>
       <div class="tool-card opencode">
         <div class="tool-tag">The Open Source</div>
-        <div class="tool-name" style="color: black !important;">OpenCode</div>
+        <div class="tool-name">OpenCode</div>
         <div class="tool-desc">Open source (MIT) multi-provider agent. Zero code storage. Supports 75+ LLMs including local models. 138K ⭐ on GitHub.</div>
         <div class="tool-meta">
           <div class="meta-item"><span class="meta-label">Vendor</span><span class="meta-val">Anomaly (open source)</span></div>
@@ -3838,7 +3926,46 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
         <div style="font-family:'JetBrains Mono',monospace;font-size:11px;background:#F4F4F4;border-radius:6px;padding:8px;color:#1A1A1A;">/explain — understand code<br>/fix — repair a bug<br>/tests — generate tests<br>/doc — add JSDoc comments</div>
       </div>
 
+      <!-- MODE 5 — THE MOST IMPORTANT -->
+      <div style="background:#0F0F0F;border:1px solid rgba(226,0,26,0.4);border-radius:12px;padding:20px;position:relative;overflow:hidden;grid-column:span 2;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E2001A,#FF4444);"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="font-family:'Fira Code',monospace;font-size:10px;color:#E2001A;letter-spacing:1px;text-transform:uppercase;">Mode 5 — 🚀 The Game Changer</div>
+          <div style="background:rgba(226,0,26,0.15);border:1px solid rgba(226,0,26,0.3);border-radius:10px;padding:2px 10px;font-size:10px;color:#E2001A;font-weight:700;font-family:'Fira Code',monospace;">MOST IMPACTFUL</div>
+        </div>
+        <div style="font-weight:700;font-size:16px;color:#FFFFFF;margin-bottom:8px;">Agent Mode — Agents &amp; Sub-agents</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:12px;color:#9A9A9A;line-height:1.6;margin-bottom:10px;">Copilot Workspace lets you give a <strong style="color:#FFFFFF">single high-level instruction</strong> and watch Copilot autonomously plan, write code, run tests, and open a PR — across multiple files — without you touching a keyboard. It orchestrates <strong style="color:#FFFFFF">sub-agents</strong> for specialized tasks (code gen, testing, security scan).</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;background:#1A1A1A;border-radius:6px;padding:10px;color:#B0A898;">"Implement the user authentication<br>module per the spec in issue #42.<br>Write tests. Open a PR."<br><br><span style="color:#2EAA4A">→ Copilot reads the issue</span><br><span style="color:#2EAA4A">→ Plans the implementation</span><br><span style="color:#2EAA4A">→ Writes auth.ts + tests</span><br><span style="color:#2EAA4A">→ Opens PR with description</span></div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#9A9A9A;line-height:1.6;margin-bottom:10px;"><strong style="color:#FFFFFF">Skills</strong> are specialized sub-agents you can attach to Copilot: a security scanner, a test generator, a doc writer. Each skill runs autonomously on the output of the previous one — forming a <strong style="color:#FFFFFF">pipeline of AI agents</strong>.</div>
+            <div style="background:#1A1A1A;border-radius:8px;padding:12px;">
+              <div style="font-size:11px;color:#E2001A;font-family:'Fira Code',monospace;margin-bottom:8px;letter-spacing:1px;">AGENT PIPELINE EXAMPLE</div>
+              <div style="display:flex;flex-direction:column;gap:4px;font-family:'JetBrains Mono',monospace;font-size:11px;">
+                <div style="color:#5BA4F5;">① Code Agent → writes implementation</div>
+                <div style="color:#4BB8A4;">② Test Agent → generates unit tests</div>
+                <div style="color:#E2001A;">③ Security Agent → scans for vulnerabilities</div>
+                <div style="color:#D4B87A;">④ Doc Agent → writes inline documentation</div>
+                <div style="color:#2EAA4A;margin-top:4px;border-top:1px solid #2A2A2A;padding-top:4px;">→ PR opened, all green ✅</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- GITHUB CLI NOTICE -->
+    <div style="margin-top:16px;background:rgba(255,165,0,0.06);border:1px solid rgba(255,165,0,0.2);border-radius:10px;padding:14px 20px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="font-size:18px;flex-shrink:0;">⚠️</div>
+      <div>
+        <div style="font-weight:700;font-size:13px;color:#FFA500;margin-bottom:4px;">GitHub Copilot CLI — Not yet available at SG</div>
+        <div style="font-size:12px;color:#7A7A7A;line-height:1.5;">GitHub Copilot is now expanding to the command line via <strong style="color:#B0A898;">GitHub CLI</strong> — allowing developers to use natural language directly in the terminal for git operations, PR management and issue triaging. This feature is <strong style="color:#FFA500;">not yet approved / deployed at Société Générale</strong>. It is on the roadmap and should be evaluated as part of the next governance cycle.</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- WORKFLOW PATTERNS -->
@@ -3930,7 +4057,8 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
   <div style="background:#F4F4F4;border-radius:20px;padding:40px 48px;">
     <div style="font-family:'Fira Code',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7A7A7A;margin-bottom:12px;">For leadership</div>
     <h3 style="font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:#1A1A1A;margin-bottom:20px;">How to measure <em style="color:#E2001A;font-style:italic">actual impact</em> — 4 metrics that matter</h3>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+    <!-- METRICS GRID -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
       <div style="background:#FFFFFF;border-radius:12px;padding:20px;text-align:center;border:1px solid #E0E0E0;">
         <div style="font-family:'Instrument Serif',serif;font-size:36px;color:#E2001A;font-weight:400;margin-bottom:4px;">⏱</div>
         <div style="font-weight:700;font-size:13px;color:#1A1A1A;margin-bottom:6px;">Time to First Commit</div>
@@ -3950,6 +4078,39 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
         <div style="font-family:'Instrument Serif',serif;font-size:36px;color:#1A1A1A;font-weight:400;margin-bottom:4px;">😊</div>
         <div style="font-weight:700;font-size:13px;color:#1A1A1A;margin-bottom:6px;">Dev Satisfaction (NPS)</div>
         <div style="font-size:12px;color:#7A7A7A;line-height:1.5;">Run a monthly 3-question survey. Unhappy devs don't use the tool. Adoption without satisfaction = wasted license cost.</div>
+      </div>
+    </div>
+
+    <!-- RISK SECTION -->
+    <div style="margin-bottom:16px;">
+      <div style="font-family:'Fira Code',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#E2001A;margin-bottom:16px;">⚠️ Risks to monitor — the other side of the equation</div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+
+        <!-- SECURITY RISK -->
+        <div style="background:#1A0005;border:1px solid rgba(226,0,26,0.3);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#E2001A;"></div>
+          <div style="font-size:24px;margin-bottom:10px;">🔐</div>
+          <div style="font-weight:700;font-size:14px;color:#FFFFFF;margin-bottom:8px;">Security vulnerabilities</div>
+          <div style="font-size:12px;color:#9A9A9A;line-height:1.6;">AI-generated code can introduce subtle security flaws — SQL injection, insecure JWT handling, missing input sanitization — that look syntactically correct but are logically broken. Studies show <strong style="color:#FFFFFF">~40% of AI-generated code contains at least one vulnerability</strong> when not reviewed. <strong style="color:#FF4444;">Mandatory security scan on all AI-generated PRs.</strong></div>
+        </div>
+
+        <!-- MAINTAINABILITY RISK -->
+        <div style="background:#0A0A1A;border:1px solid rgba(90,143,226,0.3);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#4A8FE2;"></div>
+          <div style="font-size:24px;margin-bottom:10px;">🏗️</div>
+          <div style="font-weight:700;font-size:14px;color:#FFFFFF;margin-bottom:8px;">Maintainability &amp; technical debt</div>
+          <div style="font-size:12px;color:#9A9A9A;line-height:1.6;">AI generates working code fast — but often verbose, inconsistent with existing patterns, and lacking architectural awareness. Over time, a codebase with heavy AI contribution risks becoming <strong style="color:#FFFFFF">harder to read, harder to evolve, and more fragile</strong>. The risk to project longevity is real: code that nobody fully understands is code nobody can safely change. <strong style="color:#5BA4F5;">Enforce code style rules and architectural guardrails in your prompts and CI.</strong></div>
+        </div>
+
+        <!-- ENERGY RISK -->
+        <div style="background:#0A1400;border:1px solid rgba(184,160,96,0.3);border-radius:12px;padding:20px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#B8A060;"></div>
+          <div style="font-size:24px;margin-bottom:10px;">⚡</div>
+          <div style="font-weight:700;font-size:14px;color:#FFFFFF;margin-bottom:8px;">Energy &amp; MegaWatt constraints</div>
+          <div style="font-size:12px;color:#9A9A9A;line-height:1.6;">Training and running LLMs is <strong style="color:#FFFFFF">extraordinarily energy-intensive</strong>. A single GPT-4 query consumes ~10× more energy than a Google search. At scale — millions of daily dev queries — this represents a significant carbon footprint. More critically, <strong style="color:#FFFFFF">data center capacity is already constrained globally</strong>: the race for GPU compute is colliding with limits on available MegaWatts. Medium-term, we may face <strong style="color:#D4B87A;">API rate limits, price spikes, or availability windows</strong> driven not by software but by physical energy infrastructure. Factor this into your multi-year AI tooling strategy.</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -3984,12 +4145,12 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
     </div>
     <div class="recap-card">
       <span class="recap-icon">✨</span>
-      <div class="recap-concept" style="color:#1A1A1A">GenAI</div>
-      <div class="recap-def">Creates original output from a prompt. Never retrieves. Probabilistic by design. Same prompt can give different results.</div>
+      <div class="recap-concept" style="color:#E2001A">GenAI</div>
+      <div class="recap-def">Generates original output from a prompt. Never retrieves. Probabilistic by design. Same prompt can give different results.</div>
     </div>
     <div class="recap-card">
       <span class="recap-icon">🎯</span>
-      <div class="recap-concept" style="color:#2C2C2C">Skills</div>
+      <div class="recap-concept" style="color:#E2001A">Skills</div>
       <div class="recap-def">Prompting, fine-tuning, RAG, tool use. How vendors shape raw LLMs into products. All tools use these techniques.</div>
     </div>
     <div class="recap-card">
@@ -4893,18 +5054,11 @@ window.addEventListener('scroll', () => {
     scrolled = true;
     document.getElementById('scroll-hint').classList.add('hidden');
   }
-  updateSpineCursor();
-  revealElements();
+    revealElements();
   highlightHeroYear();
 }, { passive: true });
 
-// Spine cursor position
-function updateSpineCursor() {
-  const doc = document.documentElement;
-  const pct = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
-  const cursor = document.getElementById('spine-cursor');
-  cursor.style.top = (pct * (window.innerHeight - 40) + 20) + 'px';
-}
+// spine removed
 
 // Reveal on scroll
 const revealSelectors = [
