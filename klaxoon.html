@@ -731,9 +731,9 @@ h3 {
   .compare-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
   .compare-table th { padding: 16px 20px; font-size: 13px; font-weight: 600; text-align: left; }
   .compare-table th:first-child { background: var(--bg2); color: var(--gray); }
-  .compare-table th.copilot-h { background: rgba(47,129,247,0.2); color: var(--copilot); text-align: center; }
-  .compare-table th.claude-h { background: rgba(204,120,92,0.2); color: var(--claude); text-align: center; }
-  .compare-table th.open-h { background: rgba(124,75,192,0.2); color: var(--open); text-align: center; }
+  .compare-table th.copilot-h { background: rgba(47,129,247,0.15); color: #1A1A1A; text-align: center; font-weight: 700; }
+  .compare-table th.claude-h { background: rgba(204,120,92,0.15); color: #1A1A1A; text-align: center; font-weight: 700; }
+  .compare-table th.open-h { background: rgba(124,75,192,0.15); color: #1A1A1A; text-align: center; font-weight: 700; }
   .compare-table td { padding: 14px 20px; font-size: 13px; border-top: 1px solid var(--border); text-align: center; }
   .compare-table td:first-child { text-align: left; font-weight: 600; color: var(--white); background: var(--bg2); }
   .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
@@ -1955,6 +1955,7 @@ body::before {
     <button class="nav-pill" onclick="goToId('s1')">LLM</button>
     <button class="nav-pill" onclick="goToId('s2')">GenAI</button>
     <button class="nav-pill" onclick="goToId('s3')">Skills</button>
+    <button class="nav-pill" onclick="goToId('s_mcp')">MCP</button>
     <button class="nav-pill" onclick="goToId('s4')">Agents</button>
     <button class="nav-pill" onclick="goToId('s5')">Tools Map</button>
     <button class="nav-pill part2" onclick="goToId('db-section')">Part 2 — Deep Dive</button>
@@ -2770,8 +2771,8 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
       Everything a CIO needs to know about <em>AI for developers</em>
     </h2>
     <p class="lead" style="color:rgba(255,255,255,0.6);margin:0 auto 48px;max-width:600px;">
-      No PhD required. Four concepts, one landscape map, and a clear decision framework.
-      By the end, you'll speak the language your engineers speak.
+      No PhD required. Five concepts, one landscape map, and a clear decision framework.
+      By the end, you'll speak the language your engineers speak — LLM, GenAI, Skills, MCP, and Agents.
     </p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:16px 24px;font-family:'Fira Code',monospace;font-size:13px;color:rgba(255,255,255,0.6)">
@@ -2784,7 +2785,10 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
         Chapter 3 — <span style="color:#56ab6e">Skills</span>
       </div>
       <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:16px 24px;font-family:'Fira Code',monospace;font-size:13px;color:rgba(255,255,255,0.6)">
-        Chapter 4 — <span style="color:#FF1A33">Agents</span>
+        Chapter 4 — <span style="color:#00B4D8">MCP</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:16px 24px;font-family:'Fira Code',monospace;font-size:13px;color:rgba(255,255,255,0.6)">
+        Chapter 5 — <span style="color:#FF1A33">Agents</span>
       </div>
     </div>
     <div style="margin-top:48px;color:rgba(255,255,255,0.3);font-size:13px;animation:bounce 2s infinite">
@@ -3039,14 +3043,157 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════
+  SECTION 4 — MCP
+════════════════════════════════════════════════ -->
+<section id="s_mcp">
+  <div class="section-number">4</div>
+  <div class="chapter-hero">
+    <div>
+      <div class="section-label fade-up">Chapter 04 / 05</div>
+      <h2 class="fade-up stagger-1">What is <em>MCP</em>?</h2>
+      <p class="lead fade-up stagger-2">
+        Model Context Protocol is an open standard that lets AI models connect to any external tool, data source or service — through a unified interface. Think of it as <strong>USB-C for AI</strong>: one protocol, infinite integrations.
+      </p>
+
+      <div class="analogy-box fade-up stagger-3">
+        <div class="analogy-text">
+          Before MCP, each AI tool had its own way to connect to databases, APIs, and file systems. MCP standardises everything — one protocol that any model can speak, any tool can implement.
+        </div>
+        <div class="analogy-source">Announced by Anthropic in November 2024. Now adopted by OpenAI, Google DeepMind, and most major AI tooling vendors.</div>
+      </div>
+
+      <div style="margin-top:32px;" class="fade-up stagger-4">
+        <div style="font-size:13px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;">What MCP enables concretely</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:580px;">
+          <div class="card card-accent" style="padding:16px 18px;">
+            <div style="font-size:18px;margin-bottom:6px;">🗄️</div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Database access</div>
+            <div style="font-size:12px;color:var(--dim);">Claude Code queries your Postgres or MongoDB directly, with schema awareness.</div>
+          </div>
+          <div class="card card-blue" style="padding:16px 18px;">
+            <div style="font-size:18px;margin-bottom:6px;">🌐</div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Web search & browsing</div>
+            <div style="font-size:12px;color:var(--dim);">The agent fetches live docs, reads changelogs, searches for error messages in real time.</div>
+          </div>
+          <div class="card card-teal" style="padding:16px 18px;">
+            <div style="font-size:18px;margin-bottom:6px;">🔧</div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Internal tools & APIs</div>
+            <div style="font-size:12px;color:var(--dim);">Connect to Jira, Confluence, Slack, your CI pipeline — all via MCP servers you control.</div>
+          </div>
+          <div class="card card-gold" style="padding:16px 18px;">
+            <div style="font-size:18px;margin-bottom:6px;">📁</div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:4px;">File system & code repos</div>
+            <div style="font-size:12px;color:var(--dim);">Read, write and navigate your entire codebase — not just the open file, the whole project.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-visual fade-up stagger-2">
+      <div style="max-width:380px;width:100%;">
+        <!-- MCP Architecture Diagram -->
+        <div style="background:#111111;border-radius:16px;padding:28px;border:1px solid #2a2a2a;position:relative;">
+          <div style="font-family:'Fira Code',monospace;font-size:10px;color:#E2001A;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;">MCP ARCHITECTURE</div>
+
+          <!-- AI Model box -->
+          <div style="background:#1a1a1a;border:2px solid #E2001A;border-radius:10px;padding:14px 18px;text-align:center;margin-bottom:16px;">
+            <div style="font-size:24px;margin-bottom:4px;">🧠</div>
+            <div style="font-weight:700;font-size:13px;color:#FFFFFF;">AI Model</div>
+            <div style="font-size:11px;color:#7a7a7a;font-family:'Fira Code',monospace;">Claude / GPT / Gemini</div>
+          </div>
+
+          <!-- Arrow down -->
+          <div style="text-align:center;color:#E2001A;font-size:20px;margin-bottom:4px;">↕</div>
+          <div style="text-align:center;font-family:'Fira Code',monospace;font-size:9px;color:#E2001A;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">MCP Protocol</div>
+          <div style="text-align:center;color:#E2001A;font-size:20px;margin-bottom:12px;">↕</div>
+
+          <!-- MCP Hub -->
+          <div style="background:rgba(226,0,26,0.08);border:1px solid rgba(226,0,26,0.3);border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:16px;">
+            <div style="font-weight:700;font-size:12px;color:#E2001A;font-family:'Fira Code',monospace;">MCP CLIENT HOST</div>
+            <div style="font-size:10px;color:#7a7a7a;">Claude Code · Cursor · Copilot</div>
+          </div>
+
+          <!-- Arrows to servers -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 8px;">
+            <div style="width:1px;height:20px;background:linear-gradient(to bottom,#E2001A,#4a4a4a);margin:0 auto;"></div>
+            <div style="width:1px;height:20px;background:linear-gradient(to bottom,#E2001A,#4a4a4a);margin:0 auto;"></div>
+            <div style="width:1px;height:20px;background:linear-gradient(to bottom,#E2001A,#4a4a4a);margin:0 auto;"></div>
+            <div style="width:1px;height:20px;background:linear-gradient(to bottom,#E2001A,#4a4a4a);margin:0 auto;"></div>
+          </div>
+
+          <!-- MCP Servers -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;text-align:center;">
+              <div style="font-size:16px;margin-bottom:4px;">🗄️</div>
+              <div style="font-size:10px;color:#FFFFFF;font-weight:600;">DB Server</div>
+              <div style="font-size:9px;color:#7a7a7a;font-family:'Fira Code',monospace;">Postgres/Mongo</div>
+            </div>
+            <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;text-align:center;">
+              <div style="font-size:16px;margin-bottom:4px;">🌐</div>
+              <div style="font-size:10px;color:#FFFFFF;font-weight:600;">Web Server</div>
+              <div style="font-size:9px;color:#7a7a7a;font-family:'Fira Code',monospace;">Search/Browse</div>
+            </div>
+            <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;text-align:center;">
+              <div style="font-size:16px;margin-bottom:4px;">🔧</div>
+              <div style="font-size:10px;color:#FFFFFF;font-weight:600;">Tools Server</div>
+              <div style="font-size:9px;color:#7a7a7a;font-family:'Fira Code',monospace;">Jira/Slack/CI</div>
+            </div>
+            <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px;text-align:center;">
+              <div style="font-size:16px;margin-bottom:4px;">📁</div>
+              <div style="font-size:10px;color:#FFFFFF;font-weight:600;">FS Server</div>
+              <div style="font-size:9px;color:#7a7a7a;font-family:'Fira Code',monospace;">Files/Git repos</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;padding-top:12px;border-top:1px solid #2a2a2a;font-family:'Fira Code',monospace;font-size:10px;color:#5a5a5a;text-align:center;">
+            Each server runs in YOUR infrastructure<br>
+            <span style="color:#2EAA4A;">Your data never leaves your perimeter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MCP vs No-MCP comparison -->
+  <div style="margin-top:48px;max-width:900px;" class="fade-up stagger-4">
+    <div class="concept-compare">
+      <div class="concept-col">
+        <div class="concept-title" style="color:var(--dim)">❌ Without MCP</div>
+        <div class="card" style="padding:18px 22px;">
+          <div style="font-size:13px;line-height:1.7;">
+            The AI only sees what you paste into the chat. It can't read your database schema, can't check your live docs, can't query your internal APIs. Every piece of context must be <strong>manually copied in</strong> by the developer.
+          </div>
+        </div>
+      </div>
+      <div class="concept-col">
+        <div class="concept-title" style="color:#E2001A;">✅ With MCP</div>
+        <div class="card card-accent" style="padding:18px 22px;">
+          <div style="font-size:13px;line-height:1.7;">
+            The AI agent autonomously queries your database, reads your live documentation, calls your internal APIs and searches the web — all as part of a single task. Context is <strong>fetched automatically, not pasted manually</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:#111;border:1px solid rgba(226,0,26,0.2);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;">
+      <div style="font-size:18px;flex-shrink:0;">💡</div>
+      <div style="font-size:13px;color:#9A9A9A;line-height:1.6;">
+        <strong style="color:#FFFFFF;">Claude Code has native MCP support.</strong> GitHub Copilot does not support MCP. OpenCode has partial support depending on configuration. MCP is fast becoming the standard — it is already supported by Cursor, Windsurf and most major agentic tools in 2025-26.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════
   SECTION 4 — AGENTS
 ════════════════════════════════════════════════ -->
 <section id="s4" style="background:var(--cream);">
-  <div class="section-number">4</div>
+  <div class="section-number">5</div>
   <div class="chapter-hero">
     <div>
-      <div class="section-label fade-up">Chapter 04 / 04</div>
+      <div class="section-label fade-up">Chapter 05 / 05</div>
       <h2 class="fade-up stagger-1">What is an <em>AI Agent</em>?</h2>
       <p class="lead fade-up stagger-2">
         An assistant <strong>answers</strong>. An agent <strong>acts</strong>.
@@ -3416,18 +3563,19 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
         </tr>
       </thead>
       <tbody>
-        <tr><td>Native IDE integration</td><td><span class="check">✅</span> VS Code, JetBrains, Neovim</td><td><span class="warn">⚠️</span> Terminal → IDE via plugin</td><td><span class="check">✅</span> Terminal + IDE + Desktop</td></tr>
-        <tr><td>Inline autocomplete</td><td><span class="check">✅</span> Excellent</td><td><span class="warn">⚠️</span> Limited</td><td><span class="warn">⚠️</span> Via plugin</td></tr>
-        <tr><td>Complex agentic tasks</td><td><span class="warn">⚠️</span> Partial</td><td><span class="check">✅</span> Excellent</td><td><span class="check">✅</span> Depends on model</td></tr>
-        <tr><td>LLM model choice</td><td><span class="warn">⚠️</span> 3–4 models only</td><td><span class="cross">❌</span> Claude only</td><td><span class="check">✅</span> 75+ providers + local</td></tr>
-        <tr><td>Code confidentiality</td><td><span class="warn">⚠️</span> Sent to Microsoft/GitHub</td><td><span class="warn">⚠️</span> Sent to Anthropic</td><td><span class="check">✅</span> Zero server-side storage</td></tr>
-        <tr><td>On-premise deployment</td><td><span class="cross">❌</span> Not available</td><td><span class="cross">❌</span> Not available</td><td><span class="check">✅</span> Local LLMs supported</td></tr>
-        <tr><td>Open source / auditability</td><td><span class="cross">❌</span> Proprietary</td><td><span class="cross">❌</span> Proprietary</td><td><span class="check">✅</span> MIT — fully auditable</td></tr>
-        <tr><td>Parallel multi-agent</td><td><span class="cross">❌</span> No</td><td><span class="warn">⚠️</span> Limited</td><td><span class="check">✅</span> Parallel sessions</td></tr>
-        <tr><td>GitHub Actions / CI integration</td><td><span class="check">✅</span> Native (Copilot Workspace)</td><td><span class="warn">⚠️</span> Via MCP/scripts</td><td><span class="check">✅</span> GitHub Actions built-in</td></tr>
-        <tr><td>Enterprise support</td><td><span class="check">✅</span> Microsoft Enterprise contracts</td><td><span class="check">✅</span> Anthropic Enterprise</td><td><span class="warn">⚠️</span> Community + Zen plan</td></tr>
-        <tr><td>Cost for 100 devs / year</td><td>~$22,800</td><td>~$24,000</td><td>Variable (API tokens)</td></tr>
-        <tr><td>Reasoning quality</td><td><span class="stars">★★★</span><span style="color:var(--border)">★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★</span><span style="color:var(--border)">★</span></td></tr>
+        <tr><td>Native IDE integration</td><td><span class="check">✅</span> Excellent — VS Code, JetBrains, Neovim</td><td><span class="warn">⚠️</span> Terminal-first, IDE plugin available</td><td><span class="warn">⚠️</span> Terminal-first, IDE plugin available</td></tr>
+        <tr><td>Inline autocomplete</td><td><span class="check">✅</span> Best-in-class, real-time</td><td><span class="warn">⚠️</span> Limited — agent-focused, not inline</td><td><span class="warn">⚠️</span> Limited — agent-focused, not inline</td></tr>
+        <tr><td>Complex agentic tasks</td><td><span class="warn">⚠️</span> Copilot Workspace (improving fast)</td><td><span class="check">✅</span> Best-in-class reasoning &amp; autonomy</td><td><span class="warn">⚠️</span> Quality depends entirely on chosen model</td></tr>
+        <tr><td>LLM model choice</td><td><span class="warn">⚠️</span> GPT-4o, Claude, Gemini (curated)</td><td><span class="cross">❌</span> Claude models only — vendor lock-in</td><td><span class="check">✅</span> 75+ providers incl. local models</td></tr>
+        <tr><td>Code confidentiality</td><td><span class="warn">⚠️</span> Sent to GitHub/Microsoft servers</td><td><span class="warn">⚠️</span> Sent to Anthropic servers</td><td><span class="check">✅</span> Zero storage — local mode available</td></tr>
+        <tr><td>On-premise deployment</td><td><span class="cross">❌</span> SaaS only — no on-premise option</td><td><span class="cross">❌</span> SaaS only — no on-premise option</td><td><span class="check">✅</span> Fully local LLMs supported</td></tr>
+        <tr><td>Open source / auditability</td><td><span class="cross">❌</span> Proprietary — no code audit</td><td><span class="cross">❌</span> Proprietary — no code audit</td><td><span class="check">✅</span> MIT licence — fully auditable</td></tr>
+        <tr><td>Enterprise support &amp; SLA</td><td><span class="check">✅</span> Microsoft Enterprise — mature contracts</td><td><span class="check">✅</span> Anthropic Enterprise — strong support</td><td><span class="warn">⚠️</span> Community-based — no formal SLA</td></tr>
+        <tr><td>Onboarding &amp; adoption</td><td><span class="check">✅</span> Zero friction — installs as IDE plugin</td><td><span class="warn">⚠️</span> Terminal-first — steeper learning curve</td><td><span class="warn">⚠️</span> Terminal-first — requires initial setup</td></tr>
+        <tr><td>GitHub Actions / PR automation</td><td><span class="check">✅</span> Native — Copilot Workspace, PR reviews</td><td><span class="warn">⚠️</span> Possible via MCP integration</td><td><span class="warn">⚠️</span> GitHub Actions integration available</td></tr>
+        <tr><td>MCP server support</td><td><span class="cross">❌</span> Not supported</td><td><span class="check">✅</span> Native MCP support</td><td><span class="warn">⚠️</span> Partial — depends on config</td></tr>
+        <tr><td>Cost predictability</td><td><span class="check">✅</span> Fixed per-seat (~$19/dev/month)</td><td><span class="check">✅</span> Fixed subscription ($20/month)</td><td><span class="warn">⚠️</span> Variable — usage-based API billing</td></tr>
+        <tr><td>Reasoning &amp; code quality</td><td><span class="stars">★★★</span><span style="color:#3A3A3A">★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★</span><span style="color:#3A3A3A">★★</span> (model-dependent)</td></tr>
       </tbody>
     </table>
   </div>
@@ -3498,12 +3646,12 @@ document.querySelectorAll('.hero-year-item').forEach(item => {
   <!-- ═══════════════ PANEL 4: USE CASES ═══════════════ -->
   <div class="panel" id="panel-scenarios">
     <div class="scenarios-grid">
-      <div class="scenario-card"><span class="scenario-icon">🏦</span><div class="scenario-title">Regulated Industry (banking, healthcare, defense)</div><div class="scenario-why">Critical GDPR compliance. Source code cannot leave internal infrastructure. Full audit trail and traceability required. Only one viable option.</div><span class="scenario-rec rec-open">✅ OpenCode + local LLM</span></div>
-      <div class="scenario-card"><span class="scenario-icon">🚀</span><div class="scenario-title">Tech Scale-up — Maximize Developer Velocity</div><div class="scenario-why">Developers spend their days on complex refactoring, architecture decisions and test generation. Reasoning quality is the top priority.</div><span class="scenario-rec rec-claude">✅ Claude Code</span></div>
-      <div class="scenario-card"><span class="scenario-icon">🌐</span><div class="scenario-title">Large Enterprise — Rapid Mass Adoption</div><div class="scenario-why">10,000 devs across 50 different IDEs. Onboarding friction must be zero. Existing Microsoft contracts. Enterprise support is mandatory.</div><span class="scenario-rec rec-copilot">✅ GitHub Copilot</span></div>
-      <div class="scenario-card"><span class="scenario-icon">💰</span><div class="scenario-title">Cost Optimization — Maximum Flexibility</div><div class="scenario-why">No vendor lock-in. Choose the best model at the best price for each task. No fixed per-seat cost. Direct negotiation with LLM providers.</div><span class="scenario-rec rec-open">✅ OpenCode</span></div>
-      <div class="scenario-card"><span class="scenario-icon">🧪</span><div class="scenario-title">R&D / Innovation Team — Experimentation</div><div class="scenario-why">The team wants to test different models (Gemini, GPT-5, Mistral, local) per project without being locked into a single ecosystem.</div><span class="scenario-rec rec-open">✅ OpenCode</span></div>
-      <div class="scenario-card"><span class="scenario-icon">🔀</span><div class="scenario-title">Hybrid Approach — Best of Both Worlds</div><div class="scenario-why">Combine Copilot for daily inline autocomplete with Claude Code or OpenCode for long agentic tasks. Coexistence is perfectly viable.</div><span class="scenario-rec rec-copilot">Copilot + Claude Code</span></div>
+      <div class="scenario-card"><span class="scenario-icon">🏦</span><div class="scenario-title" style="color: black !important;">Regulated Industry (banking, healthcare, defense)</div><div class="scenario-why">Critical GDPR compliance. Source code cannot leave internal infrastructure. Full audit trail and traceability required. Only one viable option.</div><span class="scenario-rec rec-open">✅ OpenCode + local LLM</span></div>
+      <div class="scenario-card"><span class="scenario-icon">🚀</span><div class="scenario-title" style="color: black !important;">Tech Scale-up — Maximize Developer Velocity</div><div class="scenario-why">Developers spend their days on complex refactoring, architecture decisions and test generation. Reasoning quality is the top priority.</div><span class="scenario-rec rec-claude">✅ Claude Code</span></div>
+      <div class="scenario-card"><span class="scenario-icon">🌐</span><div class="scenario-title" style="color: black !important;">Large Enterprise — Rapid Mass Adoption</div><div class="scenario-why">10,000 devs across 50 different IDEs. Onboarding friction must be zero. Existing Microsoft contracts. Enterprise support is mandatory.</div><span class="scenario-rec rec-copilot">✅ GitHub Copilot</span></div>
+      <div class="scenario-card"><span class="scenario-icon">💰</span><div class="scenario-title" style="color: black !important;">Cost Optimization — Maximum Flexibility</div><div class="scenario-why">No vendor lock-in. Choose the best model at the best price for each task. No fixed per-seat cost. Direct negotiation with LLM providers.</div><span class="scenario-rec rec-open">✅ OpenCode</span></div>
+      <div class="scenario-card"><span class="scenario-icon">🧪</span><div class="scenario-title" style="color: black !important;">R&D / Innovation Team — Experimentation</div><div class="scenario-why">The team wants to test different models (Gemini, GPT-5, Mistral, local) per project without being locked into a single ecosystem.</div><span class="scenario-rec rec-open">✅ OpenCode</span></div>
+      <div class="scenario-card"><span class="scenario-icon">🔀</span><div class="scenario-title" style="color: black !important;">Hybrid Approach — Best of Both Worlds</div><div class="scenario-why">Combine Copilot for daily inline autocomplete with Claude Code or OpenCode for long agentic tasks. Coexistence is perfectly viable.</div><span class="scenario-rec rec-copilot">Copilot + Claude Code</span></div>
     </div>
     <div style="margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;">
       <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;">💡 POC Recommendation — 8 Weeks</div>
@@ -4692,7 +4840,7 @@ window.addEventListener('scroll', () => {
 });
 
 function updateNavHighlight() {
-  const sections = ['cover','history-section','s0','s1','s2','s3','s4','s5','db-section','levelup-section','finale'];
+  const sections = ['cover','history-section','s0','s1','s2','s3','s_mcp','s4','s5','db-section','levelup-section','finale'];
   const pills = document.querySelectorAll('.nav-pill');
   const scrollMid = window.scrollY + window.innerHeight / 2;
   let activeIdx = 0;
